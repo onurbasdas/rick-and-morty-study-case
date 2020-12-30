@@ -23,14 +23,8 @@
 </template>
 
 <script>
-import Characters from "./Characters"
-import axios from "axios";
 export default {
-  data() {
-    return {
-      episodes: [],
-    };
-  },
+  props: ["id"],
   methods: {
     fetchQuote() {
       axios({
@@ -45,42 +39,6 @@ export default {
         }
       );
     },
-    goToDetailPage(e) {
-      this.$navigateTo(Characters, {
-        props: {
-          id = e.id,
-        },
-      });
-    },
-  },
-  created() {
-    this.fetchQuote();
   },
 };
 </script>
-
-<style scoped>
-ActionBar {
-  background-color: #53ba82;
-  color: #ffffff;
-}
-
-.list-group {
-  background-color: #fff;
-}
-
-.list-group-item {
-  background-color: #fff;
-  align-items: center;
-}
-
-.thumb {
-  width: 100;
-}
-
-.list-group-item-heading {
-  color: #333;
-  font-size: 20;
-  margin-left: 20;
-}
-</style>
